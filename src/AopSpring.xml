@@ -6,7 +6,9 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-
+	
+	<aop:aspectj-autoproxy />
+	
 	<bean name="triangle" class="com.fruit.AOP.model.Triangle">
 		<property name="name" value="Triangle name"/>
 	</bean>
@@ -16,5 +18,8 @@
 	</bean>
 	
 	<bean name="shapeService" class="com.fruit.AOP.service.ShapeService" autowire="byName"/>
+	
+	<bean name="loggingAspect" class="com.fruit.AOP.aspect.LoggingAspect"/> 
+<!--	<context:component-scan base-package="com.fruit.AOP.aspect"/> -->
 
 </beans>
