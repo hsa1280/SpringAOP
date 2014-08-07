@@ -22,4 +22,9 @@ public class LoggingAspect {
 		return object;
 	}
 	
+	public void loggingAdvice() {
+		
+		System.out.println("Logging from the advice.");
+	}
+	
 }
