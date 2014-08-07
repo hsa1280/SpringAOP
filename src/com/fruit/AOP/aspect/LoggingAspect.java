@@ -1,6 +1,8 @@
 package com.fruit.AOP.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,6 +20,26 @@ public class LoggingAspect {
 	public void stringArgumentMethods( String name ) {
 		
 		System.out.println("A method that takes String arguments has been called. The value is " + name );
+	}
+	
+	@Around("allGetters()")
+	public Object myAroundAdvice( ProceedingJoinPoint proceedingJointPoint ) {
+		
+		Object object = null;
+		
+		try {
+			
+			System.out.println("Before advice");
+			object = proceedingJointPoint.proceed();
+			System.out.println("After returning");
+			throw(new RuntimeException());
+		} catch (Throwable e) {
+
+			System.out.println("After throwing");
+		}
+		
+		System.out.println("After Finally");
+		return object;
 	}
 	
 	@Before("allGetters()")
