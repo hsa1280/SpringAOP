@@ -1,5 +1,6 @@
 package com.fruit.AOP.service;
 
+import com.fruit.AOP.aspect.Loggable;
 import com.fruit.AOP.model.Circle;
 import com.fruit.AOP.model.Triangle;
 
@@ -9,6 +10,7 @@ public class ShapeService {
 	
 	private Triangle triangle;
 
+	@Loggable
 	public Circle getCircle() {
 		return circle;
 	}

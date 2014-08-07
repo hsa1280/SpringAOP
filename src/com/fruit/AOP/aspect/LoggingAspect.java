@@ -22,7 +22,7 @@ public class LoggingAspect {
 		System.out.println("A method that takes String arguments has been called. The value is " + name );
 	}
 	
-	@Around("allGetters()")
+	@Around("@annotation(com.fruit.AOP.aspect.Loggable)")
 	public Object myAroundAdvice( ProceedingJoinPoint proceedingJointPoint ) {
 		
 		Object object = null;
@@ -32,7 +32,6 @@ public class LoggingAspect {
 			System.out.println("Before advice");
 			object = proceedingJointPoint.proceed();
 			System.out.println("After returning");
-			throw(new RuntimeException());
 		} catch (Throwable e) {
 
 			System.out.println("After throwing");
